@@ -1,4 +1,4 @@
-import "./TodoDetails.css"
+import "./TodoDetail.css"
 
 type Props = {
     title: string;
