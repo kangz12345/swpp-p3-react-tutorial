@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import "./NewTodo.css"
 
 export default function NewTodo() {
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
     const [submitted, setSubmitted] = useState<boolean>(false);
+    if (submitted) {
+        return <Navigate to="/todos" />;
+    }
     return (
         <div className="NewTodo">
             <h1>Add a Todo</h1>
