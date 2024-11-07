@@ -6,6 +6,11 @@ export default function NewTodo() {
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
     const [submitted, setSubmitted] = useState<boolean>(false);
+    const postTodoHandler = () => {
+        const data = { title: title, content: content };
+        alert("Submitted\n" + data.title + "\n" + data.content);
+        setSubmitted(true);
+    };
     if (submitted) {
         return <Navigate to="/todos" />;
     }
@@ -29,7 +34,7 @@ export default function NewTodo() {
                 }
             />
             <button onClick={
-                () => alert("Submitted")
+                () => postTodoHandler()
             }>Submit</button>
         </div>
     );
