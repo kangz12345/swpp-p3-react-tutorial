@@ -1,3 +1,5 @@
+import "./Todo.css"
+
 interface IProps {
     title: string;
     clicked?: React.MouseEventHandler<HTMLDivElement>;

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Todo from "../../components/Todo/Todo";
 
+import "./TodoList.css"
+
 interface IProps {
     title: string;
 }
