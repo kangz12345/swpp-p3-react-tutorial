@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Todo from "../../components/Todo/Todo";
+import TodoDetail from "../../components/TodoDetail/TodoDetail";
 
 import "./TodoList.css"
 
@@ -18,13 +19,27 @@ export default function TodoList(props: IProps) {
         { id: 2, title: "Movie", content: "watch movie", done: false },
         { id: 3, title: "Dinner", content: "eat dinner", done: false },
     ])
+    const [selectedTodo, setSelectedTodo] = useState<TodoType | null>(null);
+    const clickTodoHandler = (td: TodoType) => {
+        if (selectedTodo === td) {
+            setSelectedTodo(null);
+        } else {
+            setSelectedTodo(td);
+        }
+    };
+    const todoDetail = useMemo(() => {
+        return selectedTodo ? (
+            <TodoDetail title={selectedTodo.title} content={selectedTodo.content} />
+        ) : null;
+    }, [selectedTodo]);
     return (
         <div className="TodoList">
             <div className="title">{title}</div>
             <div className="todos">
                 {todos.map((td) => {
-                    return <Todo key={td.id} title={td.title} done={td.done} />
+                    return <Todo key={td.id} title={td.title} done={td.done} clicked={() => clickTodoHandler(td)} />
                 })}
+                {todoDetail}
             </div>
         </div>
     );
