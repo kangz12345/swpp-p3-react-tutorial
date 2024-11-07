@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Todo from "../../components/Todo/Todo";
 
 interface IProps {
     title: string;
@@ -15,5 +16,14 @@ export default function TodoList(props: IProps) {
         { id: 2, title: "Movie", content: "watch movie", done: false },
         { id: 3, title: "Dinner", content: "eat dinner", done: false },
     ])
-    return <div className="TodoList">{title}</div>;
+    return (
+        <div className="TodoList">
+            <div className="title">{title}</div>
+            <div className="todos">
+                {todos.map((td) => {
+                    return <Todo key={td.id} title={td.title} done={td.done} />
+                })}
+            </div>
+        </div>
+    );
 }
