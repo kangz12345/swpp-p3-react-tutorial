@@ -3,6 +3,6 @@ interface IProps {
 }
 
 export default function TodoList(props: IProps) {
-    const {title} = props;
+    const { title } = props;
     return <div className="TodoList">{title}</div>;
 }
